@@ -1,24 +1,6 @@
-# README
+# Porting plan
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Make the data layer
+ - Set up the required models/controller/migration by scaffolding. Delete the method that you won’t use like update and destroy.
+- Write routes.
+- Write the logic in the models.
