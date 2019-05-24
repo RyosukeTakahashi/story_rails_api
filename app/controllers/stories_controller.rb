@@ -24,7 +24,7 @@ class StoriesController < ApplicationController
       @page = Page.new(page_params)
       @page.save
 
-      render json: @story
+      render json: @story.change_key_name_to_snake_case(@page.id)
     else
       render json: @story.errors, status: :unprocessable_entity
     end

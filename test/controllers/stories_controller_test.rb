@@ -5,7 +5,6 @@ class StoriesControllerTest < ActionDispatch::IntegrationTest
   test "stories show" do
     get '/api/stories'
     result_hash = JSON.parse(response.body)
-    puts result_hash
     assert (result_hash[0]["title"] == 'MyString')
     assert (result_hash[0]["parentId"] == nil)
   end
@@ -13,6 +12,7 @@ class StoriesControllerTest < ActionDispatch::IntegrationTest
   test "stories save" do
     post "/api/stories",
          params: { title: "new story title", summary: "new story text" }
+    puts response.body
     story_id = JSON.parse(response.body)["id"]
     assert_response :success
 
