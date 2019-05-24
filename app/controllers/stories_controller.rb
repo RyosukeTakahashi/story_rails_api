@@ -9,12 +9,21 @@ class StoriesController < ApplicationController
   def create
     story_params = {
         title: params[:title],
-        summary: params[:summary],
+        summary: params[:text],
     }
     @story = Story.new(story_params)
 
     if @story.save
-      # render :show, status: :created, location: @story
+
+      page_params = {
+          name: params[:title],
+          text: params[:text],
+          story_id: @story.id,
+          parent_id: nil
+      }
+      @page = Page.new(page_params)
+      @page.save
+
       render json: @story
     else
       render json: @story.errors, status: :unprocessable_entity
